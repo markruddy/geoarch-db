@@ -25,6 +25,10 @@ Users have identified a number of key questions that the database needs to be ab
 3. Non-spatial
     * Find samples that correspond to a particular date range or deposit
 
+The database was built using the following:
+
+* Postgres: "PostgreSQL 9.3.1 on x86_64-apple-darwin12.5.0, compiled by i686-apple-darwin11-llvm-gcc-4.2 (GCC) 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.11.00), 64-bit"
+* PostGIS: "POSTGIS="2.1.0 r11822" GEOS="3.3.8-CAPI-1.7.8" PROJ="Rel. 4.8.0, 6 March 2012" GDAL="GDAL 1.10.0, released 2013/04/24" LIBXML="2.9.1" LIBJSON="UNKNOWN" RASTER"
 
 ## The Entity-Relationship model
 
@@ -53,6 +57,21 @@ Both **Samples** and **Laboratory Samples** need to be identified by reference t
 ## Comments on locational information
 
 This system is intended intially at least for use within the geographical area covered by the Ordnance Survey (OS) British National Grid. Locational information are assumed to be recorded in OS Eastings and Northings and heights are assumed to be referenced to the OS height datum (Newlyn).
+
+## Data origins
+
+A test dataset is provided to populate the SGdb. The majority of this derives from part of an earlier MySQL database I previously developed. The structure and many of the data types used within the MySQL db are very different to that of the Postgres db. Most notably, the MySQL db was not spatially enabled: simple point data were stored as OS BNG (Ordnance Survey British National Grid) Eastings and Northings. Height data were a mixture of height above OS datum (Newlyn) and above ground level data. 
+
+Borehole and deposit data relating to the site "Royal Albert Dock (RYA13)" are real world data and may not be reproduced or reused without permission of [L-P:Archaeology LLP](http://www.lparchaeology.com/). All other borehole data were obtained from the British Geological Survey (BGS)[#bgs] and are subject to the restrictions specified by the BGS.
+
+All other site, trench, sample and report data have been fabricated for the purposes of testing.
+
+## Build Instructions
+
+1. If a Postgres/PostGIS database has not already been created run 1.createDB.sql
+2. From Directory 2.create_tables, run create table sql files in numerical order: 1.CreateSite.sql > 2.CreateMethod.sql > ...
+3. From Directory 3.populate_tables, run sql snippets within populate_tables.sql making sure to run the separate populate_bh.sql and populate_deposit.sql files as well.
+4. From Directory 4.keys, run sql file additionalForeignKeys.sql
 
 ## Notes and References
 
