@@ -68,10 +68,10 @@ All other site, trench, sample and report data have been fabricated for the purp
 
 ## Build Instructions
 
-1. If a Postgres/PostGIS database has not already been created run 1.createDB.sql
-2. From Directory 2.create_tables, run create table sql files in numerical order: 1.CreateSite.sql > 2.CreateMethod.sql > ...
-3. From Directory 3.populate_tables, run sql snippets within populate_tables.sql making sure to run the separate populate_bh.sql and populate_deposit.sql files as well.
-4. From Directory 4.keys, run sql file additionalForeignKeys.sql
+1. If a Postgres/PostGIS database has not already been created run createDB.sql in directory 1.create_db.
+2. From directory 2.create_tables, run create table sql files in numerical order: 1.CreateSite.sql > 2.CreateMethod.sql > ...
+3. From directory 3.populate_tables, run sql snippets within populate_tables.sql making sure to run the separate populate_bh.sql and populate_deposit.sql files as well.
+4. From directory 4.keys, run sql file additionalForeignKeys.sql
 
 ## Notes and References
 
